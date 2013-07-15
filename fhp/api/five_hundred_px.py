@@ -98,6 +98,9 @@ class FiveHundredPx(object):
             kwargs['term'] = term
         if tags:
             kwargs['tags'] = tags
+        
+        kwargs['sort'] = sort
+        
         request_function = partial(self.request, '/photos/search', **kwargs)
         for photo in paginate(skip, rpp, request_function, 'photos'):
             yield photo
